@@ -33,7 +33,7 @@ export class EditerComponent implements OnInit {
       cityName: new FormControl('', [
         Validators.required,
         Validators.maxLength(40),
-        Validators.pattern('(([А-я]+)|([A-z]+))+')
+        Validators.pattern('(([А-ё]+)|([A-z]+))+')
       ])
     });
   }
