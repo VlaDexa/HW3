@@ -41,7 +41,7 @@ export class EditerComponent implements OnInit {
   updateTimeZone() {
     this._timeZoneService.updateZone(this.EditingTimeZone.id,
       this.EditZoneGroup.controls.cityName.value,
-      this.EditZoneGroup.controls.offset.value);
+      this.EditZoneGroup.controls.zone.value);
 
     this.router.navigate(['']);
   }
