@@ -4,8 +4,8 @@
   <p *ngIf='this.EditZoneGroup.controls["zone"].invalid
       && (this.EditZoneGroup.controls["zone"].dirty
       || this.EditZoneGroup.controls["zone"].touched)'>
-      Зона должна начинаться с + или - и иметь число от 0 до 12
-</p><br>
+    Зона должна начинаться с + или - и иметь число от 0 до 12
+  </p><br>
   <label>Название города</label>
   <input id="cityName" formControlName="cityName">
   <p *ngIf='this.EditZoneGroup.controls["cityName"].invalid

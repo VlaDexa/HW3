@@ -20,17 +20,17 @@ export class ListComponent implements OnInit, OnDestroy {
   searchedZone: TimeZone = null;
   detectChangesInterval: NodeJS.Timer;
   constructor(private _timeZoneService: TimeZoneService,
-              private cdr: ChangeDetectorRef) { }
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-  this.localZones = this._timeZoneService.TimeZones;
+    this.localZones = this._timeZoneService.TimeZones;
 
-  this.listOfCitiesOfZones = [];
-  this.localZones.forEach(el => {
+    this.listOfCitiesOfZones = [];
+    this.localZones.forEach(el => {
       this.listOfCitiesOfZones.push(el.city);
     });
 
-  this.filteredListOfCitiesOfZones = this.cityInput.valueChanges.pipe(
+    this.filteredListOfCitiesOfZones = this.cityInput.valueChanges.pipe(
       startWith(''),
       map(value => {
         if (value === '') {
@@ -40,7 +40,7 @@ export class ListComponent implements OnInit, OnDestroy {
       })
     );
 
-  this.timeZoneSubscription = this._timeZoneService.TimeZonesAsObservable.subscribe(data => {
+    this.timeZoneSubscription = this._timeZoneService.TimeZonesAsObservable.subscribe(data => {
       this.localZones = data;
 
       this.listOfCitiesOfZones = [];
@@ -59,7 +59,7 @@ export class ListComponent implements OnInit, OnDestroy {
       );
     });
 
-  this.detectChangesInterval = setInterval(() => { this.cdr.detectChanges(); }, 1000);
+    this.detectChangesInterval = setInterval(() => { this.cdr.detectChanges(); }, 1000);
   }
 
   getTimeWithOffset(offset: number): string {
