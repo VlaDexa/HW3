@@ -1,11 +1,11 @@
 <form class="editingForm" [formGroup]="EditZoneGroup">
   <label>Временная зона</label>
-  <input id="offset" formControlName="offset">
-  <mat-error *ngIf='this.EditZoneGroup.controls["offset"].invalid
-      && (this.EditZoneGroup.controls["offset"].dirty
-      || this.EditZoneGroup.controls["offset"].touched)'>
+  <input id="zone" formControlName="zone">
+  <p *ngIf='this.EditZoneGroup.controls["zone"].invalid
+      && (this.EditZoneGroup.controls["zone"].dirty
+      || this.EditZoneGroup.controls["zone"].touched)'>
       Зона должна начинаться с + или - и иметь число от 0 до 12
-  </mat-error>
+</p><br>
   <label>Название города</label>
   <input id="cityName" formControlName="cityName">
   <p *ngIf='this.EditZoneGroup.controls["cityName"].invalid
