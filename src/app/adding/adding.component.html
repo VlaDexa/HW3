@@ -1,0 +1,15 @@
+<form class="addingForm" [formGroup]="AddNewZoneGroup">
+  <label>Введите временную зону</label>
+  <input id="zone" formControlName="zone">
+  <p *ngIf='this.AddNewZoneGroup.controls["zone"].invalid
+  && (this.AddNewZoneGroup.controls["zone"].dirty
+  || this.AddNewZoneGroup.controls["zone"].touched)'>Зона должна начинаться с + или - и иметь число от 0 до 12</p><br>
+  <label>Введите название города</label>
+  <input id="cityName" formControlName="cityName">
+  <p *ngIf='this.AddNewZoneGroup.controls["cityName"].invalid
+  && (this.AddNewZoneGroup.controls["cityName"].dirty
+  || this.AddNewZoneGroup.controls["cityName"].touched)'>Название города должно быть длинной меньше 40 символов</p><br>
+  <button *ngIf="this.AddNewZoneGroup.invalid" disabled>Добавить Зону</button>
+  <button *ngIf="this.AddNewZoneGroup.valid" (click)="addNewZone()">Добавить Зону</button>
+</form>
+

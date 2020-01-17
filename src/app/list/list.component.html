@@ -1,0 +1,51 @@
+<form>
+  <input type="text" placeholder="Enter City" aria-label="City" [formControl]="cityInput" [matAutocomplete]="auto">
+  <mat-autocomplete (optionSelected)="GotSearch($event)" autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredListOfCitiesOfZones | async" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+</form>
+<div class="zoneList">
+  <div *ngIf='searchedZone == null'>
+    <div *ngFor="let zone of this.localZones" class="currentZone">
+      <div>
+        Время там {{getTimeWithOffset(zone.offset)}}
+      </div>
+      <div>
+        Временная зона: {{zone.offset}}
+      </div>
+      <div>
+        Название: {{zone.city}}
+      </div>
+      <div class="buttons">
+        <button [routerLink]='"edit/" + zone.id' mat-flat-button style="background-color: rgb(255, 217, 0);">
+          Редактировать
+        </button>
+        <button (click)="deleteZone(zone.id)" mat-flat-button color="warn">
+          Удалить
+        </button>
+      </div>
+    </div>
+    <div class="currentZone" *ngIf='searchedZone !== null'>
+      <div>
+        Время там: {{getTimeWithOffset(this.searchedZone.offset)}}
+      </div>
+      <div>
+        Временная зона: {{this.searchedZone.offset}}
+      </div>
+      <div>
+        Название: {{this.searchedZone.city}}
+      </div>
+      <div class="buttons">
+        <button [routerLink]='"edit/" + this.searchedZone.id' mat-flat-button
+          style="background-color: rgb(255, 217, 0);">
+          Редактировать
+        </button>
+        <button (click)="deleteZone(this.searchedZone.id)" mat-flat-button color="warn">
+          Удалить
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
