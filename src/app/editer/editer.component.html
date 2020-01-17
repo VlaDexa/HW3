@@ -1,35 +1,31 @@
 <form class="editingForm" [formGroup]="EditZoneGroup">
-  <mat-form-field class="formItem">
-    <mat-label>Time Zone</mat-label>
-    <input matInput id="offset" formControlName="offset">
-    <mat-error *ngIf='this.EditZoneGroup.controls["offset"].invalid
-       && (this.EditZoneGroup.controls["offset"].dirty
+  <label>Временная зона</label>
+  <input id="offset" formControlName="offset">
+  <mat-error *ngIf='this.EditZoneGroup.controls["offset"].invalid
+      && (this.EditZoneGroup.controls["offset"].dirty
       || this.EditZoneGroup.controls["offset"].touched)'>
-      Time Zone must be like + or - and number of offset, example: +0
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field class="formItem">
-    <mat-label>City Name</mat-label>
-    <input matInput id="cityName" formControlName="cityName">
-    <mat-error *ngIf='this.EditZoneGroup.controls["cityName"].invalid
+      Зона должна начинаться с + или - и иметь число от 0 до 12
+  </mat-error>
+  <label>Название города</label>
+  <input id="cityName" formControlName="cityName">
+  <p *ngIf='this.EditZoneGroup.controls["cityName"].invalid
       && (this.EditZoneGroup.controls["cityName"].dirty
-     || this.EditZoneGroup.controls["cityName"].touched)'>
-      City name lenght must be less then 40 symbols
-    </mat-error>
-  </mat-form-field>
+    || this.EditZoneGroup.controls["cityName"].touched)'>
+    Название города должно быть длинной меньше 40 символов
+  </p>
   <div class="buttons">
-    <button routerLink="" mat-flat-button style="background-color: rgba(144, 143, 143, 0.523);">
-      Decline
+    <button routerLink="">
+      Отмена
     </button>
-    <ng-container *ngIf="this.EditZoneGroup.invalid; else Valid">
-      <button mat-flat-button disabled>
-        Save
+    <div *ngIf="this.EditZoneGroup.invalid">
+      <button disabled>
+        Сохранить
       </button>
-    </ng-container>
-    <ng-template #Valid>
-      <button mat-flat-button style="background-color: rgb(17, 199, 17);" (click)="updateTimeZone()">
-        Save
+    </div>
+    <div *ngIf="this.EditZoneGroup.valid">
+      <button (click)="updateTimeZone()">
+        Сохранить
       </button>
-    </ng-template>
+    </div>
   </div>
 </form>

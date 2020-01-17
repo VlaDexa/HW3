@@ -19,10 +19,10 @@
         Название: {{zone.city}}
       </div>
       <div class="buttons">
-        <button [routerLink]='"edit/" + zone.id' mat-flat-button style="background-color: rgb(255, 217, 0);">
+        <button [routerLink]='"edit/" + zone.id'>
           Редактировать
         </button>
-        <button (click)="deleteZone(zone.id)" mat-flat-button color="warn">
+        <button (click)="deleteZone(zone.id)" color="warn">
           Удалить
         </button>
       </div>
@@ -38,11 +38,10 @@
         Название: {{this.searchedZone.city}}
       </div>
       <div class="buttons">
-        <button [routerLink]='"edit/" + this.searchedZone.id' mat-flat-button
-          style="background-color: rgb(255, 217, 0);">
+        <button [routerLink]='"edit/" + this.searchedZone.id'>
           Редактировать
         </button>
-        <button (click)="deleteZone(this.searchedZone.id)" mat-flat-button color="warn">
+        <button (click)="deleteZone(this.searchedZone.id)">
           Удалить
         </button>
       </div>

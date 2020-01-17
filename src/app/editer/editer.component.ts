@@ -26,13 +26,14 @@ export class EditerComponent implements OnInit {
     this.EditingTimeZone = this._timeZoneService.TimeZones.find(el => el.id === +timeZoneId);
 
     this.EditZoneGroup = new FormGroup({
-      offset: new FormControl(this.EditingTimeZone.offset, [
+      zone: new FormControl('', [
         Validators.required,
-        Validators.pattern('[-+]((1[0-2])|([0-9]))')
+        Validators.pattern('(([+]|[-]){1}((([1]{1}[0-2]){1})|(([0-9]{1}))){1}){1}$')
       ]),
-      cityName: new FormControl(this.EditingTimeZone.city, [
+      cityName: new FormControl('', [
         Validators.required,
         Validators.maxLength(40),
+        Validators.pattern('(([А-я]+)|([A-z]+))+')
       ])
     });
   }
