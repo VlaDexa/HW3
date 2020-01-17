@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { map, startWith } from 'rxjs/operators';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl} from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { TimeZone } from '../time-zoner/time-zoner.model';
 import { TimeZoneService } from '../time-zone.service';
@@ -20,7 +20,7 @@ export class ListComponent implements OnInit, OnDestroy {
   searchedZone: TimeZone = null;
   detectChangesInterval: NodeJS.Timer;
   constructor(private _timeZoneService: TimeZoneService,
-    private cdr: ChangeDetectorRef) { }
+              private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.localZones = this._timeZoneService.TimeZones;
